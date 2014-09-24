@@ -51,7 +51,7 @@ public class PuzzlesAdapter {
         Cursor cursor = queryPuzzle(pid);
         cursor.moveToFirst();
         int currMin = cursor.getInt(3), currSec = cursor.getInt(4);
-        if(currMin < min || (currMin == min && currSec < sec)) {
+        if(currMin > min || (currMin == min && currSec > sec) || (currMin == 0 && currSec == 0)) {
             String[] cols = DbHelper.TablePuzzleSolvedCols;
             ContentValues contentValues = new ContentValues();
             contentValues.put(cols[1], ((Integer) pid).toString());
