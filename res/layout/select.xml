@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <TextView android:id="@+id/puzzleNumber"
+              android:tag="text"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center"
+              android:textSize="45sp"
+              android:textColor="#ffffff"
+              android:text="Select puzzle to solve"
+              android:layout_marginTop="30dp"/>
+
+    <ScrollView android:id="@+id/scroll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp">
+        <GridLayout android:id="@+id/grid"
+                    android:columnCount="4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+            <View android:id="@+id/arr"
+                  android:layout_width="25dp"
+                  android:layout_height="25dp"
+                  android:onClick="buttonClick"
+                  android:layout_marginRight="15dp"
+                  android:layout_marginBottom="4dp"/>
+            <TextView android:layout_width="50dp"
+                      android:layout_height="match_parent"
+                      android:textSize="20sp"
+                      android:text="Nr"
+                      android:gravity="center"
+                      android:background="@drawable/table_background"
+                      android:layout_marginRight="4dp"
+                      android:layout_marginBottom="4dp"/>
+            <TextView android:layout_width="100dp"
+                      android:layout_height="match_parent"
+                      android:textSize="20sp"
+                      android:text="Complete"
+                      android:gravity="center"
+                      android:background="@drawable/table_background"
+                      android:layout_marginRight="4dp"
+                      android:layout_marginBottom="4dp"/>
+            <TextView android:layout_width="100dp"
+                      android:layout_height="match_parent"
+                      android:textSize="20sp"
+                      android:text="Best time"
+                      android:gravity="center"
+                      android:background="@drawable/table_background"
+                      android:layout_marginRight="4dp"
+                      android:layout_marginBottom="4dp"/>
+        </GridLayout>
+    </ScrollView>
+
+</LinearLayout>
