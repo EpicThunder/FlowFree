@@ -44,7 +44,7 @@ public class MainActivity extends Activity {
 
         try {
             List<Pack> packs = new ArrayList<Pack>();
-            readPack(getAssets().open("packs/packs.xml"), packs);
+            readPack(getAssets().open( "packs/packs.xml"), packs);
             for(Pack pack:packs) readPuzzles(getAssets().open(pack.getFile()));
         }
         catch ( Exception e ) {
