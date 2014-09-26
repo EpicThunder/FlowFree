@@ -27,7 +27,7 @@ public class PuzzleSelect extends Activity {
 
         DisplayMetrics metrics = this.getResources().getDisplayMetrics();
         int px, px2 = (int)(32 * (metrics.densityDpi / 160f));;
-        int widthUsed = (int)(310 * (metrics.densityDpi / 160f));
+        int widthUsed = (int)(410 * (metrics.densityDpi / 160f));
 
         DisplayMetrics displaymetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
@@ -38,6 +38,7 @@ public class PuzzleSelect extends Activity {
         ImageButton button;
         TextView textView;
         Cursor cursor;
+        PuzzlesAdapter puzzlesAdapter = new PuzzlesAdapter(this);
 
         for(int i=0, size=mGlobals.puzzles.size(); i<size; i++) {
             button = new ImageButton(this);
@@ -69,13 +70,12 @@ public class PuzzleSelect extends Activity {
 
             textView = new TextView(this);
             textView.setBackground(this.getResources().getDrawable(R.drawable.table_background));
+            textView.setTag("complete"+i);
             px = (int)(20 * (metrics.densityDpi / 160f));
             textView.setTextSize(px);
-            /*PuzzlesAdapter puzzlesAdapter = new PuzzlesAdapter(this);
             cursor = puzzlesAdapter.queryPuzzle(i);
             cursor.moveToFirst();
-            textView.setText(cursor.getString(2));*/
-            textView.setText("False");
+            textView.setText(cursor.getString(2));
             textView.setGravity(Gravity.CENTER);
             px = (int)(100 * (metrics.densityDpi / 160f));
             params = new FrameLayout.LayoutParams(px, px2);
@@ -85,13 +85,38 @@ public class PuzzleSelect extends Activity {
 
             textView = new TextView(this);
             textView.setBackground(this.getResources().getDrawable(R.drawable.table_background));
+            textView.setTag("time"+i);
             px = (int)(20 * (metrics.densityDpi / 160f));
             textView.setTextSize(px);
-            /*int min = cursor.getInt(3), sec = cursor.getInt(4);
-            if(min != 0 || sec != 0) textView.setText(min+" minutes and "+sec+" seconds.");*/
+            int min = cursor.getInt(3), sec = cursor.getInt(4);
+            if(min != 0 || sec != 0) textView.setText(min+" min, "+sec+" sec");
             textView.setGravity(Gravity.CENTER);
+            px = (int)(200 * (metrics.densityDpi / 160f));
+            params = new FrameLayout.LayoutParams(px, px2);
+            px = (int)(4 * (metrics.densityDpi / 160f));
+            params.setMargins(0,0,px,0);
             grid.addView(textView,params);
         }
+    }
+
+    public void onResume() {
+        super.onResume();
+        GridLayout gridLayout = (GridLayout)findViewById(R.id.grid);
+        Cursor cursor;
+        PuzzlesAdapter puzzlesAdapter = new PuzzlesAdapter(this);
+
+        for(int i=0, size=mGlobals.puzzles.size(); i<size; i++) {
+            TextView textView;
+
+            textView = (TextView)gridLayout.findViewWithTag("complete" + i);
+            cursor = puzzlesAdapter.queryPuzzle(i);
+            cursor.moveToFirst();
+            textView.setText(cursor.getString(2));
+            textView = (TextView)gridLayout.findViewWithTag("time" + i);
+            int min = cursor.getInt(3), sec = cursor.getInt(4);
+            if(min != 0 || sec != 0) textView.setText(min+" min, "+sec+" sec");
+        }
+
     }
 
     public void buttonClick(View view) {

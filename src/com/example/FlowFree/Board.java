@@ -147,9 +147,9 @@ public class Board extends View {
                 long timeTaken = System.currentTimeMillis() - startTime; timeTaken *= 0.001;
                 while(timeTaken>=60) { minutes++; timeTaken = timeTaken-60; }
                 Activity activity = (Activity)this.getContext();
-                /*PuzzlesAdapter puzzlesAdapter = new PuzzlesAdapter(activity);
+                PuzzlesAdapter puzzlesAdapter = new PuzzlesAdapter(activity);
                 Global mGlobal = Global.getInstance();
-                puzzlesAdapter.updatePuzzle(mGlobal.puzzles.indexOf(mGlobal.puzzle), "True", minutes, (int)timeTaken);*/
+                puzzlesAdapter.updatePuzzle(mGlobal.puzzles.indexOf(mGlobal.puzzle), "True", minutes, (int)timeTaken);
                 activity.finish();
             }
         }

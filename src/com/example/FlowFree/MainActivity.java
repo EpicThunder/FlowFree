@@ -2,6 +2,7 @@ package com.example.FlowFree;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.Point;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.view.Display;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -50,11 +52,6 @@ public class MainActivity extends Activity {
         }
 
         //mGlobals.loadMusic((AudioManager) getSystemService(AUDIO_SERVICE), this);
-
-        /*PuzzlesAdapter puzzlesAdapter = new PuzzlesAdapter(this);
-        for(int i=0, pSize=mGlobals.puzzles.size(); i<pSize; i++) {
-            puzzlesAdapter.insertPuzzle(i, "False", 0, 0);
-        }*/
     }
 
     public void buttonClick(View view) {

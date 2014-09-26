@@ -25,8 +25,8 @@ public class SettingsActivity extends PreferenceActivity {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.settings);
 
-        prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        /*pref = (CheckBoxPreference) findPreference("sound_on");
+        /*prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        pref = (CheckBoxPreference) findPreference("sound_on");
 
         pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
 

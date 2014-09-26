@@ -13,9 +13,9 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final int DB_VERSION = 1;
 
     public static final String TablePuzzle = "puzzle";
-    public static final String[] TablePuzzleSolvedCols = {"_id", "pid", "solved", "min", "sec"};
+    public static final String[] TablePuzzleCols = {"_id", "pid", "solved", "min", "sec"};
 
-    public static final String sqlCreateTablePuzzleSolved =
+    public static final String sqlCreateTablePuzzle =
             "CREATE TABLE puzzle(" +
                     " _id INTEGER PRIMARY KEY AUTOINCREMENT," +
                     " pid INTEGER NOT NULL," +
@@ -30,7 +30,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL( sqlCreateTablePuzzleSolved );
+        db.execSQL(sqlCreateTablePuzzle);
     }
 
     @Override

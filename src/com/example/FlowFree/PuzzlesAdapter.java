@@ -35,12 +35,12 @@ public class PuzzlesAdapter {
     }
 
     public long insertPuzzle( int pid, String solved, int min, int sec ) {
-        String[] cols = DbHelper.TablePuzzleSolvedCols;
+        String[] cols = DbHelper.TablePuzzleCols;
         ContentValues contentValues = new ContentValues();
-        contentValues.put( cols[1], pid );
+        contentValues.put( cols[1], ((Integer)pid).toString() );
         contentValues.put( cols[2], solved );
-        contentValues.put( cols[3], min );
-        contentValues.put( cols[4], sec );
+        contentValues.put( cols[3], ((Integer)min).toString() );
+        contentValues.put( cols[4], ((Integer)sec).toString() );
         openToWrite();
         long value = db.insert(DbHelper.TablePuzzle, null, contentValues );
         close();
@@ -52,14 +52,14 @@ public class PuzzlesAdapter {
         cursor.moveToFirst();
         int currMin = cursor.getInt(3), currSec = cursor.getInt(4);
         if(currMin > min || (currMin == min && currSec > sec) || (currMin == 0 && currSec == 0)) {
-            String[] cols = DbHelper.TablePuzzleSolvedCols;
+            String[] cols = DbHelper.TablePuzzleCols;
             ContentValues contentValues = new ContentValues();
-            contentValues.put(cols[1], ((Integer) pid).toString());
+            contentValues.put(cols[1], ((Integer)pid).toString());
             contentValues.put(cols[2], solved);
-            contentValues.put(cols[3], min);
-            contentValues.put(cols[4], sec);
+            contentValues.put(cols[3], ((Integer)min).toString());
+            contentValues.put(cols[4], ((Integer)sec).toString());
             openToWrite();
-            long value = db.update(DbHelper.TablePuzzle, contentValues, cols[1] + pid, null);
+            long value = db.update(DbHelper.TablePuzzle, contentValues, cols[1] + "=" + pid, null);
             close();
             return value;
         }
@@ -69,17 +69,15 @@ public class PuzzlesAdapter {
     public Cursor queryPuzzles() {
         openToRead();
         Cursor cursor = db.query( DbHelper.TablePuzzle,
-                DbHelper.TablePuzzleSolvedCols, null, null, null, null, null);
-        close();
+                DbHelper.TablePuzzleCols, null, null, null, null, null);
         return cursor;
     }
 
     public Cursor queryPuzzle( int pid) {
         openToRead();
-        String[] cols = DbHelper.TablePuzzleSolvedCols;
+        String[] cols = DbHelper.TablePuzzleCols;
         Cursor cursor = db.query( DbHelper.TablePuzzle,
-                cols, cols[1] + "" + pid, null, null, null, null);
-        close();
+                cols, cols[1] + "=" + pid, null, null, null, null);
         return cursor;
     }
 }

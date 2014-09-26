@@ -26,14 +26,6 @@ public class PlayActivity extends Activity {
         setContentView(R.layout.play);
         TextView textView = (TextView)findViewById(R.id.puzzleNumber);
         textView.setText("Puzzle "+(mGlobals.puzzles.indexOf(mGlobals.puzzle)+1));
-
-        /*Display display = getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        int padding = size.x/10;
-        int heightPadding = size.y/10;
-        findViewById(android.R.id.content).setPadding(padding,heightPadding,padding,0);
-        findViewById(android.R.id.content).invalidate();*/
         Board board = (Board)findViewById(R.id.board);
         board.setPuzzle(mGlobals.puzzle);
     }
