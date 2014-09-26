@@ -40,7 +40,7 @@ public class MainActivity extends Activity {
         int padding = size.x/10;
         int heightPadding = size.y/10;
         findViewById(android.R.id.content).setPadding(padding,heightPadding,padding,0);
-        findViewById(android.R.id.content).invalidate();
+        findViewById( android.R.id.content).invalidate();
 
         try {
             List<Pack> packs = new ArrayList<Pack>();
